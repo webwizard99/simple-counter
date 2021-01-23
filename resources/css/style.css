@@ -4,6 +4,7 @@
   background: rgb(245,250,245);
   color: rgb(30, 40, 30);
   overflow: hidden;
+  overscroll-behavior: none;
 }
 
 .button {
@@ -17,6 +18,10 @@
 .counter-container, .clear-container {
   display: flex;
   margin-bottom: 2rem;
+}
+
+.first-count {
+  padding-top: 2.5rem;
 }
 
 .clear-container {
