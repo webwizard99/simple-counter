@@ -126,7 +126,9 @@ const counterController = (function(){
     },
     incrementCounter: (e) => {
       console.log(e.target);
+      e.preventDefault();
       let targetCounter = e.target;
+      if (targetCounter.classList.contains('main-container')) return;
       if (!e.target.classList.contains('counter-container')) {
         targetCounter = targetCounter.parentNode;
       }
