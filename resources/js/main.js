@@ -18,10 +18,10 @@ const counterController = (function(){
   }
 
   const newButton = `
-    <div class="new-button button"><p class="new-button-icon noselect">+</p></div>
+    <div class="new-button button noselect"><p class="new-button-icon noselect">+</p></div>
   `
   const counterTemplate = `
-    <div id="%id%" class="counter-container button" counter-id="%count-id%">
+    <div id="%id%" class="counter-container button noselect" counter-id="%count-id%">
       <p class="button-type noselect">%button-type-display%</p>
       <div class="count-display noselect">%count%</div>
     </div>
