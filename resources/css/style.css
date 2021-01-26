@@ -13,25 +13,73 @@
   font-size: 1.4rem;
   background: rgb(230, 235, 30);
   color: rgb(30, 40, 30);
+  border: 1px solid rgb(30, 40, 30);
+  border-radius: 4px;
 }
 
-.counter-container, .clear-container {
+.button-type, .new-button-icon {
+  font-size: 3rem;
+}
+
+.button-type {
+  margin-left: 1rem;
+  width: 10rem;
+}
+
+.button-type, .count-display {
+  line-height: 3rem;
+  padding: .5rem;
+  touch-action: none;
+}
+
+.new-button {
+  display: flex;
+  justify-content: center;
+}
+
+.counter-container, .clear-container, .counters-container {
   display: flex;
   margin-bottom: 2rem;
 }
 
-.first-count {
-  padding-top: 2.5rem;
-}
 
 .clear-container {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
-.count-display, .total-display {
-  margin-left: 1rem;
-  margin-top: 1rem;
-  line-height:1.4rem;
+.count-display {
   color: rgb(60, 70, 60);
   width: 3rem;
+  margin-left: 1rem;
+}
+
+@media (orientation: landscape) {
+  .counter-container {
+    flex-direction: column;
+    width: 30%;
+  }
+
+  .counters-container {
+
+  }
+
+  .button-type {
+    width: 8rem;
+  }
+}
+
+@media (orientation: portrait) {
+  .counter-container {
+    width: 100%;
+  }
+
+  .counters-container {
+    margin-top: 3rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .button-type, .count-display {
+    padding: 1.5rem;
+  }
 }
