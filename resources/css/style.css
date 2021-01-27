@@ -82,8 +82,11 @@
     width: 100%;
   }
 
+  .main-container {
+    padding-top: 3rem;
+  }
+
   .counters-container {
-    margin-top: 3rem;
     flex-wrap: wrap;
     align-items: center;
   }
