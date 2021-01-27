@@ -123,9 +123,12 @@ const counterController = (function(){
   }
 
   return {
-    addCounter: () => {
+    addCounter: (e) => {
       // exit if max counters exist
       if (counters.length >= maxCounters) return;
+      if (!e.target.classList.contains('new-button-select')) {
+        e.preventDefault();
+      }
       // create counter model
       const currentType = Number.parseInt(document.querySelector(DOM.newSelect).value);
       countersReserve = countersReserve.filter(reserveCounter => reserveCounter !== currentType);
