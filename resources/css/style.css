@@ -82,13 +82,10 @@
     width: 100%;
   }
 
-  .main-container {
-    padding-top: 3rem;
-  }
-
   .counters-container {
     flex-wrap: wrap;
     align-items: center;
+    padding-top: 3rem;
   }
 
   .button-type, .count-display {
