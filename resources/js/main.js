@@ -179,6 +179,9 @@ const counterController = (function(){
     incrementCounter: (e) => {
       console.log(e.target);
       // e.preventDefault();
+      if (!e.target.classList.contains('new-button-select')) {
+        e.preventDefault();
+      }
       let targetCounter = e.target;
       if (targetCounter.classList.contains('main-container')) return;
 
