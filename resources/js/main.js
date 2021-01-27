@@ -13,6 +13,7 @@ const storage = (function(){
 
 const counterController = (function(){
   const DOM = {
+    mainContainer: '.main-container',
     countersContainer: '.counters-container',
     newButton: '.new-button',
     newButtonContainer: '.new-button-container',
@@ -177,11 +178,7 @@ const counterController = (function(){
       return DOM;
     },
     incrementCounter: (e) => {
-      console.log(e.target);
       // e.preventDefault();
-      if (!e.target.classList.contains('new-button-select')) {
-        e.preventDefault();
-      }
       let targetCounter = e.target;
       if (targetCounter.classList.contains('main-container')) return;
 
@@ -212,12 +209,19 @@ const counterController = (function(){
 }())
 
 
-const clearCounts = () => {
+const clearCounts = (e) => {
   counterController.clearCounters();
+}
+
+const nullifyTouches = (e) => {
+  if (!e.target.classList.contains('new-button-select')) {
+    e.preventDefault();
+  }
 }
 
 const setEventListeners = () => {
   const DOM = counterController.getDOMStrings();
+  document.querySelector(DOM.mainContainer).addEventListener('touchstart', nullifyTouches);
   document.querySelector(DOM.countersContainer).addEventListener('touchstart', counterController.incrementCounter);
   document.querySelector(DOM.newButton).addEventListener('touchstart', counterController.addCounter);
   document.querySelector(buttons.clear).addEventListener('touchstart', clearCounts);
