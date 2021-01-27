@@ -17,6 +17,10 @@
   border-radius: 4px;
 }
 
+.new-button-container {
+  display: flex;
+}
+
 .button-type, .new-button-icon {
   font-size: 3rem;
 }
