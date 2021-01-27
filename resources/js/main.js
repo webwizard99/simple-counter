@@ -124,6 +124,10 @@ const counterController = (function(){
   }
 
   return {
+    getCounter: (num) => {
+      if (counters.length < num) return false;
+      else return counters[num - 1];
+    },
     addCounter: (e) => {
       // exit if max counters exist
       if (counters.length >= maxCounters) return;
@@ -180,23 +184,18 @@ const counterController = (function(){
     incrementCounter: (e) => {
       // e.preventDefault();
       let targetCounter = e.target;
-      if (targetCounter.classList.contains('main-container')) return;
+      // if (targetCounter.classList.contains('main-container')) return;
 
       if (!e.target.classList.contains('counter-container')) {
         targetCounter = targetCounter.parentNode;
       }
-      console.log(targetCounter);
       let counterId = targetCounter.getAttribute('counter-id');
-      console.log(counterId);
       counterId = Number.parseInt(counterId);
-      console.log(counterId);
       if (counterId === undefined) {
         console.log('invalid counter id!')
         return;
       }
-      console.log(counters);
       let foundCounter = counters.find(counter => counter.id === counterId);
-      console.log(foundCounter);
       if (!foundCounter) return;
       foundCounter.incrementCounter();
       foundCounter.updateContent();
@@ -219,9 +218,35 @@ const nullifyTouches = (e) => {
   }
 }
 
+const keyProcessor = (e) => {
+  let counter;
+  switch (e.keyCode) {
+    case 32:
+      counter = counterController.getCounter(1);
+      if (!counter) return;
+      counter.incrementCounter();
+      counter.updateContent();
+      break;
+    case 65:
+    case 83:
+    case 68:
+    case 66:
+    case 72:
+    case 74:
+      counter = counterController.getCounter(2);
+      if (!counter) return;
+      counter.incrementCounter();
+      counter.updateContent();
+      break;
+    default:
+      return;
+  }
+}
+
 const setEventListeners = () => {
   const DOM = counterController.getDOMStrings();
   document.querySelector(DOM.mainContainer).addEventListener('touchstart', nullifyTouches);
+  window.addEventListener('keydown', keyProcessor);
   document.querySelector(DOM.countersContainer).addEventListener('touchstart', counterController.incrementCounter);
   document.querySelector(DOM.newButton).addEventListener('touchstart', counterController.addCounter);
   document.querySelector(buttons.clear).addEventListener('touchstart', clearCounts);
