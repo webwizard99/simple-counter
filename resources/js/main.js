@@ -173,6 +173,7 @@ const counterController = (function(){
       }
     },
     clearCounters: () => {
+      if (counters.length <= 0) return;
       counters.forEach(counter => {
         counter.clearCounter();
         counter.updateContent();
@@ -237,6 +238,11 @@ const keyProcessor = (e) => {
       if (!counter) return;
       counter.incrementCounter();
       counter.updateContent();
+      break;
+    case 27:
+    case 46:
+    case 8:
+      counterController.clearCounters();
       break;
     default:
       return;
